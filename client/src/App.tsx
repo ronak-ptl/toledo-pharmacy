@@ -8,6 +8,11 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
+import HipaaNotice from "./pages/HipaaNotice";
+import MedicalDisclaimer from "./pages/MedicalDisclaimer";
+import CookiePolicy from "./pages/CookiePolicy";
 
 function Router() {
   return (
@@ -16,6 +21,11 @@ function Router() {
       <Route path="/about" component={About} />
       <Route path="/contact" component={Contact} />
       <Route path="/blog" component={Blog} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
+      <Route path="/terms-of-service" component={TermsOfService} />
+      <Route path="/hipaa-notice" component={HipaaNotice} />
+      <Route path="/medical-disclaimer" component={MedicalDisclaimer} />
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

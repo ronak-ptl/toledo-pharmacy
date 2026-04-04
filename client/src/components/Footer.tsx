@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="container py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           {/* Brand column */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-5">
@@ -71,6 +71,31 @@ export default function Footer() {
               ].map((service) => (
                 <li key={service}>
                   <span className="text-white/60 text-sm font-body">{service}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Legal */}
+          <div>
+            <h3 className="font-display font-semibold text-white text-sm uppercase tracking-wider mb-5">
+              Legal
+            </h3>
+            <ul className="space-y-3">
+              {[
+                { href: "/privacy-policy", label: "Privacy Policy" },
+                { href: "/terms-of-service", label: "Terms of Service" },
+                { href: "/hipaa-notice", label: "HIPAA Notice" },
+                { href: "/medical-disclaimer", label: "Medical Disclaimer" },
+                { href: "/cookie-policy", label: "Cookie Policy" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-white/60 hover:text-marigold transition-colors text-sm font-body"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
