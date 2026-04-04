@@ -153,9 +153,13 @@ export default function Footer() {
           <p className="text-white/40 text-xs font-body">
             &copy; {new Date().getFullYear()} Toledo Pharmacy. All rights reserved.
           </p>
-          <p className="text-white/40 text-xs font-body">
-            3808 Bergenline Ave, Union City, NJ 07087
-          </p>
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            <Link href="/privacy-policy" className="text-white/40 hover:text-marigold transition-colors text-xs font-body">Privacy Policy</Link>
+            <span className="text-white/20 text-xs">·</span>
+            <Link href="/hipaa-notice" className="text-white/40 hover:text-marigold transition-colors text-xs font-body">HIPAA Notice</Link>
+            <span className="text-white/20 text-xs">·</span>
+            <Link href="/legal" className="text-white/40 hover:text-marigold transition-colors text-xs font-body">Legal Center</Link>
+          </div>
         </div>
       </div>
     </footer>
