@@ -179,7 +179,7 @@ export default function Home() {
       </section>
 
       {/* Stats Bar */}
-      <section className="bg-cream -mt-1">
+      <section className="bg-cream -mt-2">
         <div className="container py-8">
           <motion.div
             initial="hidden"
