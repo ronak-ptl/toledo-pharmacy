@@ -6,7 +6,8 @@
 import { Link } from "wouter";
 import { Phone, MapPin, Clock } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/toledo-logo_1769e9dd.webp";
+const LOGO_URL =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/toledo-logo_1769e9dd.webp";
 
 export default function Footer() {
   return (
@@ -26,9 +27,7 @@ export default function Footer() {
               Your trusted independent pharmacy in the heart of Union City, NJ.
               Over 40 years of personalized care for our community.
             </p>
-            <p className="text-white/40 text-xs font-body">
-              Se habla Español
-            </p>
+            <p className="text-white/40 text-xs font-body">Se habla Español</p>
           </div>
 
           {/* Quick Links */}
@@ -42,7 +41,7 @@ export default function Footer() {
                 { href: "/about", label: "About Us" },
                 { href: "/blog", label: "Health Blog" },
                 { href: "/contact", label: "Contact" },
-              ].map((link) => (
+              ].map(link => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -68,9 +67,11 @@ export default function Footer() {
                 "Health Screenings",
                 "Easy Transfers & Refills",
                 "Lowest Price Guarantee",
-              ].map((service) => (
+              ].map(service => (
                 <li key={service}>
-                  <span className="text-white/60 text-sm font-body">{service}</span>
+                  <span className="text-white/60 text-sm font-body">
+                    {service}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -116,7 +117,6 @@ export default function Footer() {
                   <p>Sun: Closed</p>
                 </div>
               </li>
-
             </ul>
           </div>
         </div>
@@ -126,7 +126,8 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
           <p className="text-white/40 text-xs font-body">
-            &copy; {new Date().getFullYear()} Toledo Pharmacy. All rights reserved.
+            &copy; {new Date().getFullYear()} Toledo Pharmacy. All rights
+            reserved.
           </p>
           <p className="text-white/40 text-xs font-body">
             3808 Bergenline Ave, Union City, NJ 07087

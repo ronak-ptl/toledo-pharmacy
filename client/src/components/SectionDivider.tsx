@@ -4,9 +4,16 @@ interface SectionDividerProps {
   flip?: boolean;
 }
 
-export default function SectionDivider({ from = "#ffffff", to = "#1B2A4A", flip = false }: SectionDividerProps) {
+export default function SectionDivider({
+  from = "#ffffff",
+  to = "#1B2A4A",
+  flip = false,
+}: SectionDividerProps) {
   return (
-    <div className={`relative w-full h-16 md:h-24 ${flip ? "rotate-180" : ""}`} style={{ marginTop: "-1px", marginBottom: "-1px" }}>
+    <div
+      className={`relative w-full h-16 md:h-24 ${flip ? "rotate-180" : ""}`}
+      style={{ marginTop: "-1px", marginBottom: "-1px" }}
+    >
       <svg
         viewBox="0 0 1440 96"
         fill="none"
