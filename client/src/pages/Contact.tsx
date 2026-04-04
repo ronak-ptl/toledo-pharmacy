@@ -69,7 +69,9 @@ type FormData = {
 };
 
 function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "submitting" | "success" | "error"
+  >("idle");
 
   const {
     register,
@@ -86,7 +88,10 @@ function ContactForm() {
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
           name: data.name,
           email: data.email,
@@ -136,7 +141,9 @@ function ContactForm() {
             {...register("name", { required: "Name is required" })}
           />
           {errors.name && (
-            <p className="mt-1 text-red-500 text-xs font-body">{errors.name.message}</p>
+            <p className="mt-1 text-red-500 text-xs font-body">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
@@ -151,11 +158,16 @@ function ContactForm() {
             className={inputClass(!!errors.email)}
             {...register("email", {
               required: "Email is required",
-              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email",
+              },
             })}
           />
           {errors.email && (
-            <p className="mt-1 text-red-500 text-xs font-body">{errors.email.message}</p>
+            <p className="mt-1 text-red-500 text-xs font-body">
+              {errors.email.message}
+            </p>
           )}
         </div>
       </div>
@@ -171,11 +183,16 @@ function ContactForm() {
           className={inputClass(!!errors.phone)}
           {...register("phone", {
             required: "Phone number is required",
-            pattern: { value: /^[\d\s\-().+]{7,}$/, message: "Enter a valid phone number" },
+            pattern: {
+              value: /^[\d\s\-().+]{7,}$/,
+              message: "Enter a valid phone number",
+            },
           })}
         />
         {errors.phone && (
-          <p className="mt-1 text-red-500 text-xs font-body">{errors.phone.message}</p>
+          <p className="mt-1 text-red-500 text-xs font-body">
+            {errors.phone.message}
+          </p>
         )}
       </div>
 
@@ -190,11 +207,16 @@ function ContactForm() {
           className={inputClass(!!errors.message)}
           {...register("message", {
             required: "Message is required",
-            minLength: { value: 10, message: "Message must be at least 10 characters" },
+            minLength: {
+              value: 10,
+              message: "Message must be at least 10 characters",
+            },
           })}
         />
         {errors.message && (
-          <p className="mt-1 text-red-500 text-xs font-body">{errors.message.message}</p>
+          <p className="mt-1 text-red-500 text-xs font-body">
+            {errors.message.message}
+          </p>
         )}
       </div>
 
@@ -275,7 +297,13 @@ export default function Contact() {
             {contactInfo.map((info, i) => {
               const Wrapper = info.href ? "a" : "div";
               const wrapperProps = info.href
-                ? { href: info.href, target: info.href.startsWith("http") ? "_blank" : undefined, rel: info.href.startsWith("http") ? "noopener noreferrer" : undefined }
+                ? {
+                    href: info.href,
+                    target: info.href.startsWith("http") ? "_blank" : undefined,
+                    rel: info.href.startsWith("http")
+                      ? "noopener noreferrer"
+                      : undefined,
+                  }
                 : {};
               return (
                 <motion.div key={info.title} custom={i} variants={fadeUp}>
@@ -321,7 +349,9 @@ export default function Contact() {
                 We'd Love to Hear From You
               </h2>
               <p className="text-navy/60 text-base leading-relaxed font-body mb-6">
-                Have a question about your prescription, our services, or insurance? Fill out the form and we'll get back to you as soon as possible.
+                Have a question about your prescription, our services, or
+                insurance? Fill out the form and we'll get back to you as soon
+                as possible.
               </p>
               <div className="space-y-3">
                 <div className="flex items-center gap-3 text-navy/70 text-sm font-body">
@@ -329,7 +359,10 @@ export default function Contact() {
                     <Phone className="w-4 h-4 text-marigold-dark" />
                   </div>
                   Prefer to call? Reach us at{" "}
-                  <a href="tel:2018670297" className="text-navy font-semibold hover:text-marigold-dark transition-colors">
+                  <a
+                    href="tel:2018670297"
+                    className="text-navy font-semibold hover:text-marigold-dark transition-colors"
+                  >
                     (201) 867-0297
                   </a>
                 </div>
@@ -399,10 +432,17 @@ export default function Contact() {
                   </h3>
                 </div>
                 <div className="space-y-3">
-                  {hours.map((h) => (
-                    <div key={h.day} className="flex justify-between items-center">
-                      <span className="text-navy/70 text-sm font-body">{h.day}</span>
-                      <span className="text-navy font-display font-medium text-sm">{h.time}</span>
+                  {hours.map(h => (
+                    <div
+                      key={h.day}
+                      className="flex justify-between items-center"
+                    >
+                      <span className="text-navy/70 text-sm font-body">
+                        {h.day}
+                      </span>
+                      <span className="text-navy font-display font-medium text-sm">
+                        {h.time}
+                      </span>
                     </div>
                   ))}
                 </div>
@@ -414,7 +454,8 @@ export default function Contact() {
                   Get Directions
                 </h3>
                 <p className="text-white/60 text-sm font-body mb-5">
-                  We're located on Bergenline Avenue in the heart of Union City, NJ. Easy access from Route 495 and NJ Transit bus lines.
+                  We're located on Bergenline Avenue in the heart of Union City,
+                  NJ. Easy access from Route 495 and NJ Transit bus lines.
                 </p>
                 <a
                   href="https://www.google.com/maps/dir/?api=1&destination=3808+Bergenline+Ave,+Union+City,+NJ+07087"
@@ -433,7 +474,8 @@ export default function Contact() {
                   Need Help Now?
                 </h3>
                 <p className="text-navy/60 text-sm font-body mb-4">
-                  Give us a call and our friendly staff will be happy to assist you.
+                  Give us a call and our friendly staff will be happy to assist
+                  you.
                 </p>
                 <a
                   href="tel:2018670297"
