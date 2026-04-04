@@ -43,7 +43,7 @@
 
   /* Custom Toledo Pharmacy colors */
   --color-navy: oklch(0.25 0.05 260);
-  --color-navy-light: oklch(0.30 0.05 260);
+  --color-navy-light: oklch(0.3 0.05 260);
   --color-navy-dark: oklch(0.18 0.05 260);
   --color-marigold: oklch(0.78 0.14 70);
   --color-marigold-light: oklch(0.85 0.12 70);
@@ -51,10 +51,10 @@
   --color-cream: oklch(0.97 0.005 90);
   --color-light-gray: oklch(0.96 0.005 260);
   --color-teal: oklch(0.55 0.12 195);
-  --color-teal-light: oklch(0.65 0.10 195);
+  --color-teal-light: oklch(0.65 0.1 195);
 
-  --font-display: 'Outfit', sans-serif;
-  --font-body: 'Source Sans 3', sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Source Sans 3", sans-serif;
 }
 
 :root {
@@ -66,29 +66,29 @@
   --chart-2: oklch(0.55 0.12 195);
   --chart-3: oklch(0.25 0.05 260);
   --chart-4: oklch(0.85 0.12 70);
-  --chart-5: oklch(0.30 0.05 260);
+  --chart-5: oklch(0.3 0.05 260);
   --radius: 0.625rem;
   --background: oklch(0.99 0.002 90);
-  --foreground: oklch(0.20 0.03 260);
+  --foreground: oklch(0.2 0.03 260);
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.03 260);
+  --card-foreground: oklch(0.2 0.03 260);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.03 260);
+  --popover-foreground: oklch(0.2 0.03 260);
   --secondary: oklch(0.96 0.005 260);
-  --secondary-foreground: oklch(0.30 0.05 260);
+  --secondary-foreground: oklch(0.3 0.05 260);
   --muted: oklch(0.96 0.005 260);
   --muted-foreground: oklch(0.55 0.02 260);
   --accent: oklch(0.96 0.005 260);
-  --accent-foreground: oklch(0.20 0.03 260);
+  --accent-foreground: oklch(0.2 0.03 260);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
   --border: oklch(0.92 0.005 260);
   --input: oklch(0.92 0.005 260);
   --ring: oklch(0.78 0.14 70);
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.20 0.03 260);
+  --sidebar-foreground: oklch(0.2 0.03 260);
   --sidebar-accent: oklch(0.96 0.005 260);
-  --sidebar-accent-foreground: oklch(0.20 0.03 260);
+  --sidebar-accent-foreground: oklch(0.2 0.03 260);
   --sidebar-border: oklch(0.92 0.005 260);
   --sidebar-ring: oklch(0.78 0.14 70);
 }
@@ -101,7 +101,12 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
   }
   button:not(:disabled),

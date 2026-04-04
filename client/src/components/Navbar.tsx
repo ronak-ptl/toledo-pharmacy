@@ -10,7 +10,8 @@ import { Link, useLocation } from "wouter";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, MapPin } from "lucide-react";
 
-const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/toledo-logo_1769e9dd.webp";
+const LOGO_URL =
+  "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/toledo-logo_1769e9dd.webp";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -82,7 +83,7 @@ export default function Navbar() {
 
           {/* Desktop links */}
           <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
+            {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -146,7 +147,11 @@ export default function Navbar() {
             >
               <div className="p-6 flex flex-col h-full">
                 <div className="flex items-center justify-between">
-                  <img src={LOGO_URL} alt="Toledo Pharmacy" className="h-8 w-auto" />
+                  <img
+                    src={LOGO_URL}
+                    alt="Toledo Pharmacy"
+                    className="h-8 w-auto"
+                  />
                   <button
                     onClick={() => setIsOpen(false)}
                     className="p-2 rounded-lg text-navy/60 hover:bg-navy/5"
@@ -157,7 +162,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="flex flex-col gap-1 mt-8">
-                  {navLinks.map((link) => (
+                  {navLinks.map(link => (
                     <Link
                       key={link.href}
                       href={link.href}
