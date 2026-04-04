@@ -190,7 +190,7 @@ export default function Contact() {
                   We're located on Bergenline Avenue in the heart of Union City, NJ. Easy access from Route 495 and NJ Transit bus lines.
                 </p>
                 <a
-                  href="https://maps.google.com/maps/dir//3808+Bergenline+Ave+Union+City+NJ+07087"
+                  href="https://www.google.com/maps/dir/?api=1&destination=3808+Bergenline+Ave,+Union+City,+NJ+07087"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-marigold to-marigold-dark text-navy font-display font-semibold text-sm rounded-lg hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
