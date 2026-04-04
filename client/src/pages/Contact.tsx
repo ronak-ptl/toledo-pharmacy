@@ -3,6 +3,8 @@
  * Contact: Map, contact info cards, contact form
  */
 
+import { useState } from "react";
+import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import {
   Phone,
@@ -10,9 +12,14 @@ import {
   Clock,
   Printer,
   Navigation,
+  Send,
+  CheckCircle,
+  AlertCircle,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -45,7 +52,6 @@ const contactInfo = [
     secondary: "Union City, NJ 07087",
     href: "https://maps.google.com/?q=3808+Bergenline+Ave+Union+City+NJ+07087",
   },
-
 ];
 
 const hours = [
@@ -53,6 +59,174 @@ const hours = [
   { day: "Saturday", time: "9:00 AM - 4:00 PM" },
   { day: "Sunday", time: "Closed" },
 ];
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  _honeypot: string;
+};
+
+function ContactForm() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>();
+
+  const onSubmit = async (data: FormData) => {
+    // Honeypot: silently reject bot submissions
+    if (data._honeypot) return;
+
+    setStatus("submitting");
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          phone: data.phone,
+          message: data.message,
+        }),
+      });
+      if (res.ok) {
+        setStatus("success");
+        reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputClass = (hasError: boolean) =>
+    `w-full px-4 py-3 rounded-lg border text-navy font-body text-sm placeholder:text-navy/30 focus:outline-none focus:ring-2 transition-all duration-200 ${
+      hasError
+        ? "border-red-300 bg-red-50 focus:ring-red-200"
+        : "border-navy/10 bg-white focus:ring-marigold/30 focus:border-marigold/40"
+    }`;
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      {/* Honeypot — hidden from humans, bots fill this in */}
+      <input
+        type="text"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="absolute opacity-0 pointer-events-none w-0 h-0"
+        {...register("_honeypot")}
+      />
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+        {/* Name */}
+        <div>
+          <label className="block text-navy font-display font-medium text-sm mb-1.5">
+            Full Name <span className="text-red-400">*</span>
+          </label>
+          <input
+            type="text"
+            placeholder="Jane Smith"
+            className={inputClass(!!errors.name)}
+            {...register("name", { required: "Name is required" })}
+          />
+          {errors.name && (
+            <p className="mt-1 text-red-500 text-xs font-body">{errors.name.message}</p>
+          )}
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-navy font-display font-medium text-sm mb-1.5">
+            Email <span className="text-red-400">*</span>
+          </label>
+          <input
+            type="email"
+            placeholder="jane@example.com"
+            className={inputClass(!!errors.email)}
+            {...register("email", {
+              required: "Email is required",
+              pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "Enter a valid email" },
+            })}
+          />
+          {errors.email && (
+            <p className="mt-1 text-red-500 text-xs font-body">{errors.email.message}</p>
+          )}
+        </div>
+      </div>
+
+      {/* Phone */}
+      <div className="mb-4">
+        <label className="block text-navy font-display font-medium text-sm mb-1.5">
+          Phone <span className="text-red-400">*</span>
+        </label>
+        <input
+          type="tel"
+          placeholder="(201) 555-0000"
+          className={inputClass(!!errors.phone)}
+          {...register("phone", {
+            required: "Phone number is required",
+            pattern: { value: /^[\d\s\-().+]{7,}$/, message: "Enter a valid phone number" },
+          })}
+        />
+        {errors.phone && (
+          <p className="mt-1 text-red-500 text-xs font-body">{errors.phone.message}</p>
+        )}
+      </div>
+
+      {/* Message */}
+      <div className="mb-6">
+        <label className="block text-navy font-display font-medium text-sm mb-1.5">
+          Message <span className="text-red-400">*</span>
+        </label>
+        <textarea
+          rows={4}
+          placeholder="How can we help you?"
+          className={inputClass(!!errors.message)}
+          {...register("message", {
+            required: "Message is required",
+            minLength: { value: 10, message: "Message must be at least 10 characters" },
+          })}
+        />
+        {errors.message && (
+          <p className="mt-1 text-red-500 text-xs font-body">{errors.message.message}</p>
+        )}
+      </div>
+
+      {/* Success / Error feedback */}
+      {status === "success" && (
+        <div className="flex items-center gap-3 p-4 rounded-lg bg-green-50 border border-green-200 mb-4">
+          <CheckCircle className="w-5 h-5 text-green-500 shrink-0" />
+          <p className="text-green-700 text-sm font-body">
+            Message sent! We'll get back to you soon.
+          </p>
+        </div>
+      )}
+      {status === "error" && (
+        <div className="flex items-center gap-3 p-4 rounded-lg bg-red-50 border border-red-200 mb-4">
+          <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
+          <p className="text-red-700 text-sm font-body">
+            Something went wrong. Please call us at (201) 867-0297.
+          </p>
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "submitting"}
+        className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-marigold to-marigold-dark text-navy font-display font-semibold text-sm rounded-lg shadow-md shadow-marigold/20 hover:shadow-lg hover:shadow-marigold/30 hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+      >
+        <Send className="w-4 h-4" />
+        {status === "submitting" ? "Sending…" : "Send Message"}
+      </button>
+    </form>
+  );
+}
 
 export default function Contact() {
   return (
@@ -129,8 +303,61 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map + Hours */}
+      {/* Contact Form */}
       <section className="bg-white py-16 md:py-24">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            {/* Left: copy */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <span className="inline-block text-marigold-dark font-display font-semibold text-sm uppercase tracking-wider mb-3">
+                Send Us a Message
+              </span>
+              <h2 className="font-display font-bold text-navy text-3xl md:text-4xl leading-tight mb-4">
+                We'd Love to Hear From You
+              </h2>
+              <p className="text-navy/60 text-base leading-relaxed font-body mb-6">
+                Have a question about your prescription, our services, or insurance? Fill out the form and we'll get back to you as soon as possible.
+              </p>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3 text-navy/70 text-sm font-body">
+                  <div className="w-8 h-8 rounded-lg bg-marigold/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 text-marigold-dark" />
+                  </div>
+                  Prefer to call? Reach us at{" "}
+                  <a href="tel:2018670297" className="text-navy font-semibold hover:text-marigold-dark transition-colors">
+                    (201) 867-0297
+                  </a>
+                </div>
+                <div className="flex items-center gap-3 text-navy/70 text-sm font-body">
+                  <div className="w-8 h-8 rounded-lg bg-marigold/10 flex items-center justify-center shrink-0">
+                    <Clock className="w-4 h-4 text-marigold-dark" />
+                  </div>
+                  We typically respond within one business day
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right: form */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="bg-cream rounded-2xl p-7 border border-navy/5"
+            >
+              <ContactForm />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map + Hours */}
+      <section className="bg-cream py-16 md:py-24">
         <div className="container">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Map */}
@@ -162,7 +389,7 @@ export default function Contact() {
               className="space-y-6"
             >
               {/* Hours Card */}
-              <div className="bg-cream rounded-xl p-6 border border-navy/5">
+              <div className="bg-white rounded-xl p-6 border border-navy/5">
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-teal/15 to-teal/5 flex items-center justify-center">
                     <Clock className="w-5 h-5 text-teal" />
