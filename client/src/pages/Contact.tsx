@@ -13,7 +13,6 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { MapView } from "@/components/Map";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -142,17 +141,15 @@ export default function Contact() {
               transition={{ duration: 0.6 }}
               className="lg:col-span-2 rounded-2xl overflow-hidden shadow-lg shadow-navy/5 border border-navy/5 h-[400px] md:h-[480px]"
             >
-              <MapView
-                onMapReady={(map) => {
-                  const position = { lat: 40.7697, lng: -74.0247 };
-                  map.setCenter(position);
-                  map.setZoom(16);
-                  new google.maps.Marker({
-                    position,
-                    map,
-                    title: "Toledo Pharmacy",
-                  });
-                }}
+              <iframe
+                src="https://maps.google.com/maps?q=3808+Bergenline+Ave,+Union+City,+NJ+07087&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Toledo Pharmacy location"
               />
             </motion.div>
 
