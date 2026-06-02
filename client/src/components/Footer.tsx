@@ -66,6 +66,7 @@ export default function Footer() {
                 "Insurance Coordination",
                 "All Major Vaccines",
                 "Health Screenings",
+                "Specialty Medications",
                 "Easy Transfers & Refills",
                 "Lowest Price Guarantee",
               ].map((service) => (

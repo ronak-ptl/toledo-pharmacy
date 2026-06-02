@@ -17,9 +17,14 @@ import {
   Clock,
   Star,
   HeartPulse,
+  Pill,
+  Check,
+  X,
+  ArrowRightLeft,
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const HERO_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/hero-pharmacy-NNBzxgMYoJH5SHhL8ZDxic.webp";
 const DELIVERY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/pharmacy-services-9e7AJhAUU88VVotXMy5zw4.webp";
@@ -66,11 +71,18 @@ const services = [
     iconColor: "text-teal",
   },
   {
+    icon: Pill,
+    title: "Specialty Medications",
+    desc: "We coordinate specialty prescriptions for complex conditions — working directly with your doctor and insurance to get you the medications you need.",
+    color: "from-marigold/10 to-marigold/5",
+    iconColor: "text-marigold-dark",
+  },
+  {
     icon: DollarSign,
     title: "Lowest Prices",
     desc: "Competitive pricing on all prescriptions and OTC products. We price-match to make sure you get the best deal.",
-    color: "from-marigold/10 to-marigold/5",
-    iconColor: "text-marigold-dark",
+    color: "from-teal/10 to-teal/5",
+    iconColor: "text-teal",
   },
   {
     icon: RefreshCw,
@@ -88,9 +100,85 @@ const stats = [
   { value: "Bilingual", label: "English & Spanish\nService" },
 ];
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Pharmacy",
+  name: "Toledo Pharmacy",
+  url: "https://www.toledopharmacy.com",
+  telephone: "+1-201-867-0297",
+  faxNumber: "+1-201-867-6848",
+  image: HERO_IMG,
+  description:
+    "Independent pharmacy in Union City, NJ serving the community since 1982. Free prescription delivery, walk-in vaccinations, insurance coordination, health screenings, and bilingual English/Spanish service.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "3808 Bergenline Ave",
+    addressLocality: "Union City",
+    addressRegion: "NJ",
+    postalCode: "07087",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 40.7704,
+    longitude: -74.0237,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "19:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: "Saturday",
+      opens: "09:00",
+      closes: "16:00",
+    },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "57",
+    bestRating: "5",
+  },
+  priceRange: "$",
+  currenciesAccepted: "USD",
+  paymentAccepted: "Cash, Credit Card, Insurance",
+  areaServed: {
+    "@type": "City",
+    name: "Union City",
+    containedInPlace: {
+      "@type": "State",
+      name: "New Jersey",
+    },
+  },
+  sameAs: [],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Pharmacy Services",
+    itemListElement: [
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Free Prescription Delivery" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Walk-In Vaccinations" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Insurance Coordination" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Health Screenings" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Specialty Medications" } },
+      { "@type": "Offer", itemOffered: { "@type": "Service", name: "Easy Transfers & Refills" } },
+    ],
+  },
+  knowsLanguage: ["en", "es"],
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Union City NJ Pharmacy | Free Delivery & Walk-In Vaccines"
+        description="Toledo Pharmacy in Union City, NJ — over 40 years of trusted care. Free prescription delivery, walk-in vaccinations, insurance coordination, and bilingual service. Call (201) 867-0297."
+        path="/"
+        jsonLd={localBusinessJsonLd}
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -269,6 +357,137 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Google Reviews Section */}
+      <section className="bg-white py-16 md:py-24 border-t border-navy/5">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="text-center mb-14"
+          >
+            <motion.span
+              custom={0}
+              variants={fadeUp}
+              className="inline-block text-marigold-dark font-display font-semibold text-sm uppercase tracking-wider mb-3"
+            >
+              What Our Customers Say
+            </motion.span>
+            <motion.h2
+              custom={1}
+              variants={fadeUp}
+              className="font-display font-bold text-navy text-3xl md:text-4xl lg:text-5xl mb-4"
+            >
+              Rated 4.9 Stars on Google
+            </motion.h2>
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              className="flex items-center justify-center gap-2 mb-2"
+            >
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-7 h-7 text-marigold fill-marigold" />
+                ))}
+              </div>
+              <span className="font-display font-bold text-navy text-3xl">4.9</span>
+            </motion.div>
+            <motion.p
+              custom={3}
+              variants={fadeUp}
+              className="text-navy/50 text-base font-body"
+            >
+              Based on 57 Google Reviews — the highest-rated pharmacy in Union City
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10"
+          >
+            {[
+              {
+                name: "Katherine R.",
+                time: "3 months ago",
+                text: "The most exceptional customer service I have ever endured! So respectful, caring and loving! Always on point and always so focused! Hardic and his team are the best! 10 stars from me!",
+                initials: "KR",
+                color: "from-marigold to-marigold-dark",
+              },
+              {
+                name: "Duygu H.",
+                time: "2 months ago",
+                text: "Special thanks to Hardic! I was in a severe asthma flare-up and struggling to breathe. Despite being uninsured, Hardic went above and beyond to find the best possible pricing for my medication.",
+                initials: "DH",
+                color: "from-teal to-teal-dark",
+              },
+              {
+                name: "Michael C.",
+                time: "2 years ago",
+                text: "Nice little pharmacy with some OTC selections, service was quick and the staff on site is friendly. A great alternative if you prefer supporting small local businesses in this area.",
+                initials: "MC",
+                color: "from-navy to-navy-light",
+              },
+            ].map((review, i) => (
+              <motion.div
+                key={review.name}
+                custom={i}
+                variants={fadeUp}
+                className="bg-cream rounded-xl p-7 shadow-sm border border-navy/5 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+              >
+                <div className="flex mb-3">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 text-marigold fill-marigold" />
+                  ))}
+                </div>
+                <p className="text-navy/70 text-sm leading-relaxed font-body mb-5 line-clamp-4">
+                  "{review.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center`}
+                  >
+                    <span className="text-white font-display font-semibold text-xs">
+                      {review.initials}
+                    </span>
+                  </div>
+                  <div>
+                    <p className="font-display font-semibold text-navy text-sm">
+                      {review.name}
+                    </p>
+                    <p className="text-navy/40 text-xs font-body">{review.time}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center"
+          >
+            <a
+              href="https://search.google.com/local/writereview?placeid=ChIJG-Ps0CZYwokRrPUja-Lzx3A"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-7 py-3.5 bg-navy text-white font-display font-semibold rounded-lg hover:bg-navy-light transition-colors duration-200"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+              Leave Us a Review on Google
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
       {/* About Preview Section */}
       <section className="relative bg-white py-16 md:py-24 overflow-hidden">
         <div className="container">
@@ -429,6 +648,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Transfer Your Prescription CTA */}
+      <section className="bg-cream py-16 md:py-20">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <motion.div custom={0} variants={fadeUp} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-marigold/10 text-marigold-dark text-sm font-medium font-body mb-4">
+              <ArrowRightLeft className="w-3.5 h-3.5" />
+              Switch in Minutes
+            </motion.div>
+            <motion.h2
+              custom={1}
+              variants={fadeUp}
+              className="font-display font-bold text-navy text-3xl md:text-4xl lg:text-5xl mb-4"
+            >
+              Transfer Your Prescription to{" "}
+              <span className="text-marigold-dark">Toledo Pharmacy</span>
+            </motion.h2>
+            <motion.p
+              custom={2}
+              variants={fadeUp}
+              className="text-navy/60 text-lg font-body mb-8 max-w-2xl mx-auto"
+            >
+              Switching is easy — just call us with your prescription details and
+              we handle everything. No paperwork, no hassle, and your first
+              delivery is free.
+            </motion.p>
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <a
+                href="tel:2018670297"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-marigold to-marigold-dark text-navy font-display font-semibold rounded-lg shadow-lg shadow-marigold/25 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <Phone className="w-5 h-5" />
+                Call to Transfer: (201) 867-0297
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-navy text-white font-display font-semibold rounded-lg hover:bg-navy-light transition-colors duration-200"
+              >
+                Contact Us Online
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </motion.div>
+            <motion.p
+              custom={4}
+              variants={fadeUp}
+              className="text-navy/40 text-sm font-body mt-6"
+            >
+              Se habla Español — we're happy to help in English or Spanish.
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Community / Delivery Section */}
       <section className="bg-light-gray py-16 md:py-24">
         <div className="container">
@@ -498,8 +778,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Google Reviews Section */}
-      <section className="bg-cream py-16 md:py-24">
+
+      {/* Why Choose Us vs. Chain Pharmacies */}
+      <section className="bg-white py-16 md:py-24 border-t border-navy/5">
         <div className="container">
           <motion.div
             initial="hidden"
@@ -512,119 +793,83 @@ export default function Home() {
               variants={fadeUp}
               className="inline-block text-marigold-dark font-display font-semibold text-sm uppercase tracking-wider mb-3"
             >
-              What Our Customers Say
+              The Toledo Difference
             </motion.span>
             <motion.h2
               custom={1}
               variants={fadeUp}
               className="font-display font-bold text-navy text-3xl md:text-4xl lg:text-5xl mb-4"
             >
-              Trusted by Our Community
+              Why Patients Choose Us Over Chain Pharmacies
             </motion.h2>
-            <motion.div
+            <motion.p
               custom={2}
               variants={fadeUp}
-              className="flex items-center justify-center gap-2 mb-2"
+              className="text-navy/60 text-lg font-body max-w-2xl mx-auto"
             >
-              <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-marigold fill-marigold" />
-                ))}
-              </div>
-              <span className="font-display font-bold text-navy text-2xl">4.9</span>
-            </motion.div>
-            <motion.p
-              custom={3}
-              variants={fadeUp}
-              className="text-navy/50 text-base font-body"
-            >
-              Based on 57 Google Reviews
+              Big chains can't match 40 years of personalized community care.
             </motion.p>
           </motion.div>
 
           <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10"
-          >
-            {[
-              {
-                name: "Katherine R.",
-                time: "3 months ago",
-                text: "The most exceptional customer service I have ever endured! So respectful, caring and loving! Always on point and always so focused! Hardic and his team are the best! 10 stars from me!",
-                initials: "KR",
-                color: "from-marigold to-marigold-dark",
-              },
-              {
-                name: "Duygu H.",
-                time: "2 months ago",
-                text: "Special thanks to Hardic! I was in a severe asthma flare-up and struggling to breathe. Despite being uninsured, Hardic went above and beyond to find the best possible pricing for my medication.",
-                initials: "DH",
-                color: "from-teal to-teal-dark",
-              },
-              {
-                name: "Michael C.",
-                time: "2 years ago",
-                text: "Nice little pharmacy with some OTC selections, service was quick and the staff on site is friendly. A great alternative if you prefer supporting small local businesses in this area.",
-                initials: "MC",
-                color: "from-navy to-navy-light",
-              },
-            ].map((review, i) => (
-              <motion.div
-                key={review.name}
-                custom={i}
-                variants={fadeUp}
-                className="bg-white rounded-xl p-7 shadow-sm border border-navy/5 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
-              >
-                <div className="flex mb-3">
-                  {[...Array(5)].map((_, j) => (
-                    <Star key={j} className="w-4 h-4 text-marigold fill-marigold" />
-                  ))}
-                </div>
-                <p className="text-navy/70 text-sm leading-relaxed font-body mb-5 line-clamp-4">
-                  "{review.text}"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`w-10 h-10 rounded-full bg-gradient-to-br ${review.color} flex items-center justify-center`}
-                  >
-                    <span className="text-white font-display font-semibold text-xs">
-                      {review.initials}
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-display font-semibold text-navy text-sm">
-                      {review.name}
-                    </p>
-                    <p className="text-navy/40 text-xs font-body">{review.time}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center"
+            className="max-w-3xl mx-auto"
           >
-            <a
-              href="https://search.google.com/local/writereview?placeid=ChIJG-Ps0CZYwokRrPUja-Lzx3A"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-navy text-white font-display font-semibold rounded-lg hover:bg-navy-light transition-colors duration-200"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
-                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-              </svg>
-              Leave Us a Review on Google
-            </a>
+            <div className="rounded-2xl border border-navy/10 overflow-hidden shadow-sm">
+              <div className="grid grid-cols-3 bg-navy text-white font-display font-semibold text-sm">
+                <div className="p-4 md:p-5" />
+                <div className="p-4 md:p-5 text-center border-l border-white/10">
+                  <span className="text-marigold">Toledo Pharmacy</span>
+                </div>
+                <div className="p-4 md:p-5 text-center border-l border-white/10">
+                  Chain Pharmacies
+                </div>
+              </div>
+              {[
+                { feature: "Prescription Delivery", us: true, them: "Paid ($6–$10)" },
+                { feature: "Opens at 9 AM", us: true, them: false },
+                { feature: "No Lunch Break Closure", us: true, them: false },
+                { feature: "Bilingual Staff", us: true, them: false },
+                { feature: "Know You by Name", us: true, them: false },
+                { feature: "Specialty Medications", us: true, them: true },
+                { feature: "Walk-In Vaccines", us: true, them: true },
+                { feature: "Insurance Coordination", us: true, them: "Limited" },
+              ].map((row, i) => (
+                <div
+                  key={row.feature}
+                  className={`grid grid-cols-3 text-sm ${i % 2 === 0 ? "bg-cream/50" : "bg-white"}`}
+                >
+                  <div className="p-4 md:p-5 font-body text-navy font-medium">
+                    {row.feature}
+                  </div>
+                  <div className="p-4 md:p-5 flex justify-center border-l border-navy/5">
+                    {row.us === true ? (
+                      <div className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-teal" />
+                      </div>
+                    ) : (
+                      <span className="text-navy/60 font-body text-xs">{String(row.us)}</span>
+                    )}
+                  </div>
+                  <div className="p-4 md:p-5 flex justify-center border-l border-navy/5">
+                    {row.them === true ? (
+                      <div className="w-6 h-6 rounded-full bg-teal/10 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-teal" />
+                      </div>
+                    ) : row.them === false ? (
+                      <div className="w-6 h-6 rounded-full bg-red-50 flex items-center justify-center">
+                        <X className="w-4 h-4 text-red-400" />
+                      </div>
+                    ) : (
+                      <span className="text-navy/50 font-body text-xs">{row.them}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </section>
