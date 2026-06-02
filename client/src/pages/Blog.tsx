@@ -8,10 +8,8 @@ import { Link } from "wouter";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-
-const VACCINE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/vaccination-service-oCeUoFsJH2N8hkySDiniox.webp";
-const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/community-health-b8Mtsb7ZrpbPxc22Uah2iH.webp";
-const DELIVERY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/pharmacy-services-9e7AJhAUU88VVotXMy5zw4.webp";
+import SEOHead from "@/components/SEOHead";
+import { blogPosts } from "@/data/blogPosts";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -22,48 +20,14 @@ const fadeUp = {
   }),
 };
 
-const blogPosts = [
-  {
-    id: "fall-care-tips",
-    title: "Fall Care Tips",
-    excerpt:
-      "As the seasons change, it's important to prepare your health routine for the cooler months ahead. Here are our top tips for staying healthy this fall, from flu prevention to managing seasonal allergies.",
-    date: "October 8, 2024",
-    category: "Health Tips",
-    image: COMMUNITY_IMG,
-  },
-  {
-    id: "summer-care-tips",
-    title: "Summer Care Tips",
-    excerpt:
-      "Stay safe and healthy during the hot summer months with these essential tips from our pharmacists. Learn about sun protection, hydration, and managing summer allergies.",
-    date: "April 19, 2023",
-    category: "Health Tips",
-    image: DELIVERY_IMG,
-  },
-  {
-    id: "covid-19-vaccine",
-    title: "COVID-19 Vaccine Available",
-    excerpt:
-      "Pfizer and Moderna Booster vaccines are available at Toledo Pharmacy! No appointment needed — just walk in. Protect yourself and your loved ones today. Vacunas Pfizer y Moderna Booster disponibles.",
-    date: "December 6, 2022",
-    category: "Vaccinations",
-    image: VACCINE_IMG,
-  },
-  {
-    id: "home-covid-test-kits",
-    title: "Home COVID Test Kits",
-    excerpt:
-      "COVID-19 Home Test Kits are now available at Toledo Pharmacy. Stop by our location at 3808 Bergenline Ave, Union City, NJ 07087 to pick up yours today. Kit de prueba COVID-19 disponible.",
-    date: "December 6, 2022",
-    category: "COVID-19",
-    image: VACCINE_IMG,
-  },
-];
-
 export default function Blog() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Health Blog | Pharmacy Tips & Wellness Advice"
+        description="Stay informed with health tips, pharmacy news, and wellness advice from Toledo Pharmacy in Union City, NJ. Expert guidance from our pharmacists."
+        path="/blog"
+      />
       <Navbar />
 
       {/* Hero Banner */}
@@ -108,13 +72,16 @@ export default function Blog() {
             transition={{ duration: 0.6 }}
             className="mb-12"
           >
-            <div className="relative rounded-2xl overflow-hidden bg-white shadow-lg shadow-navy/5 border border-navy/5">
+            <Link
+              href={`/blog/${blogPosts[0].id}`}
+              className="group block relative rounded-2xl overflow-hidden bg-white shadow-lg shadow-navy/5 border border-navy/5 hover:shadow-xl hover:shadow-navy/10 transition-all duration-300"
+            >
               <div className="grid grid-cols-1 lg:grid-cols-2">
-                <div className="relative h-[280px] lg:h-auto">
+                <div className="relative h-[280px] lg:h-auto overflow-hidden">
                   <img
                     src={blogPosts[0].image}
                     alt={blogPosts[0].title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                   <div className="absolute top-4 left-4">
                     <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-marigold/90 text-navy text-xs font-display font-semibold">
@@ -128,18 +95,18 @@ export default function Blog() {
                     <Calendar className="w-4 h-4" />
                     {blogPosts[0].date}
                   </div>
-                  <h2 className="font-display font-bold text-navy text-2xl md:text-3xl mb-4">
+                  <h2 className="font-display font-bold text-navy text-2xl md:text-3xl mb-4 group-hover:text-marigold-dark transition-colors">
                     {blogPosts[0].title}
                   </h2>
                   <p className="text-navy/60 text-base leading-relaxed font-body mb-6">
                     {blogPosts[0].excerpt}
                   </p>
-                  <span className="inline-flex items-center gap-2 text-marigold-dark font-display font-semibold text-sm">
+                  <span className="inline-flex items-center gap-2 text-marigold-dark font-display font-semibold text-sm group-hover:gap-3 transition-all">
                     Read More <ArrowRight className="w-4 h-4" />
                   </span>
                 </div>
               </div>
-            </div>
+            </Link>
           </motion.div>
 
           {/* Other Posts Grid */}
@@ -156,6 +123,7 @@ export default function Blog() {
                 variants={fadeUp}
                 className="bg-white rounded-xl overflow-hidden shadow-sm border border-navy/5 hover:shadow-md hover:shadow-navy/5 hover:-translate-y-1 transition-all duration-300 group"
               >
+                <Link href={`/blog/${post.id}`} className="block">
                 <div className="relative h-[200px] overflow-hidden">
                   <img
                     src={post.image}
@@ -184,6 +152,7 @@ export default function Blog() {
                     Read More <ArrowRight className="w-3.5 h-3.5" />
                   </span>
                 </div>
+                </Link>
               </motion.article>
             ))}
           </motion.div>
