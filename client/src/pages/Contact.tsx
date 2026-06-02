@@ -115,6 +115,13 @@ function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <div className="mb-5 p-3.5 rounded-lg bg-amber-50 border border-amber-200/60">
+        <p className="text-amber-800 text-xs font-body leading-relaxed">
+          <strong>Privacy Notice:</strong> Please do not include prescription numbers, medication names, or other health information in this form. For prescription-related inquiries, call us directly at{" "}
+          <a href="tel:2018670297" className="underline font-semibold">(201) 867-0297</a>.
+        </p>
+      </div>
+
       {/* Honeypot — hidden from humans, bots fill this in */}
       <input
         type="text"

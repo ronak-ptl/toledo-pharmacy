@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
-const LAST_UPDATED = "April 3, 2026";
+const LAST_UPDATED = "June 2, 2026";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -61,8 +61,8 @@ export default function CookiePolicy() {
                   <P>Essential for basic website operation (navigation, contact form functionality). Cannot be disabled without significantly impairing the site. Do not collect information used for marketing.</P>
                 </SubSection>
                 <SubSection title="Analytics and Performance Cookies">
-                  <P>We may use analytics tools to collect aggregated, anonymized data about how visitors use our websites — such as most-visited pages, session duration, and traffic sources. This helps us improve the site.</P>
-                  <P>Analytics tools operate under their own privacy policies and may transfer data to servers outside the U.S.</P>
+                  <P>We may use privacy-focused analytics tools (such as Umami) to collect aggregated, anonymized data about how visitors use our websites — such as most-visited pages, session duration, and traffic sources. This helps us improve the site. We do not use Google Analytics.</P>
+                  <P>Any analytics tools we use are selected for their privacy-first approach and do not use personally identifiable tracking cookies.</P>
                 </SubSection>
                 <SubSection title="Functional Cookies">
                   <P>These may remember your preferences (e.g., language) and enable enhanced functionality. Set by us or by third-party service providers.</P>
@@ -75,7 +75,7 @@ export default function CookiePolicy() {
               </Section>
               <Section title="5. Third-Party Cookies">
                 <P>Our websites may include features from third parties that set their own cookies:</P>
-                <UL items={["Google Maps — for our location and directions feature","Google Reviews — for displaying customer reviews","Analytics tools — for site traffic analysis"]} />
+                <UL items={["Google Maps — for our location and directions feature","Google Reviews — for linking to customer reviews","Formspree — for processing contact form submissions"]} />
                 <P>We do not control third-party cookies. Please refer to each provider's privacy and cookie policy for details.</P>
               </Section>
               <Section title="6. Managing Your Cookie Preferences">
@@ -83,7 +83,7 @@ export default function CookiePolicy() {
                   <P>You can manage cookies through your browser settings — block all cookies, delete existing cookies, or receive notifications before a cookie is placed. Note that blocking all cookies may impair site functionality.</P>
                 </SubSection>
                 <SubSection title="Analytics Opt-Out">
-                  <P>To opt out of analytics tracking, you may install the Google Analytics Opt-out Browser Add-on available at: tools.google.com/dlpage/gaoptout</P>
+                  <P>Our analytics tools are privacy-focused and do not use personally identifiable cookies. If you wish to block all analytics, you can disable JavaScript or use a browser extension that blocks third-party scripts.</P>
                 </SubSection>
               </Section>
               <Section title="7. New Jersey and California Residents">

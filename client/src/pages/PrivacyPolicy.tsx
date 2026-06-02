@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 
-const LAST_UPDATED = "April 3, 2026";
+const LAST_UPDATED = "June 2, 2026";
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <div className="mb-8">
@@ -71,7 +71,7 @@ export default function PrivacyPolicy() {
               </Section>
               <Section title="4. Disclosure of Your Information">
                 <P>We do not sell or rent your personal information. We may share it only in these limited circumstances:</P>
-                <UL items={["Healthcare Providers: We may share relevant health information with your physicians or other providers involved in your care as permitted by law.","Insurance Companies: We share information necessary to process claims and coordinate benefits.","Service Providers: Trusted third parties (e.g., website hosting, analytics) who are contractually obligated to protect your data and use it only as we specify.","Legal Requirements: We may disclose information if required by law, court order, or to protect the safety of patients, staff, or the public."]} />
+                <UL items={["Healthcare Providers: We may share relevant health information with your physicians or other providers involved in your care as permitted by law.","Insurance Companies: We share information necessary to process claims and coordinate benefits.","Service Providers: Trusted third parties (e.g., website hosting, Formspree for contact form processing) who are contractually obligated to protect your data and use it only as we specify.","Legal Requirements: We may disclose information if required by law, court order, or to protect the safety of patients, staff, or the public."]} />
               </Section>
               <Section title="5. HIPAA — Protected Health Information">
                 <P>As a licensed pharmacy, Toledo Pharmacy is a HIPAA-covered entity. Protected Health Information (PHI) you provide — including prescription details, insurance information, medication history, and vaccination records — is handled in accordance with HIPAA. Our Notice of Privacy Practices (NPP) describes your full rights under HIPAA and is available at the pharmacy counter or upon request.</P>
@@ -80,7 +80,8 @@ export default function PrivacyPolicy() {
                 <P>Our websites may use cookies and similar technologies to improve functionality and analyze traffic. You may manage cookies through your browser settings, though disabling certain cookies may affect site functionality. We may use analytics services such as Google Analytics, which operates under its own privacy policy. See our separate Cookie Policy for full details.</P>
               </Section>
               <Section title="7. Contact Form Data">
-                <P>When you submit the contact form on either website (www.mytoledorx.com and www.toledopharmacy.com), your name, email, phone number, and message are transmitted to us solely to respond to your inquiry. We do not share this data with third parties for marketing. We retain submissions only as long as necessary.</P>
+                <P>When you submit the contact form on either website (www.mytoledorx.com and www.toledopharmacy.com), your name, email, phone number, and message are processed through Formspree, Inc., a third-party form processing service, and delivered to us via email. Formspree processes this data solely to deliver your message to us and is contractually obligated to protect it. We do not share contact form data with third parties for marketing. We retain submissions only as long as necessary to respond to your inquiry.</P>
+                <P><strong>Important:</strong> Our contact form is not intended for submitting prescription information, medication details, or other Protected Health Information (PHI). For prescription-related inquiries, please call us directly at (201) 867-0297.</P>
               </Section>
               <Section title="8. Children's Privacy">
                 <P>Our websites are not directed to children under 13. We do not knowingly collect information from children under 13. If you believe we have inadvertently done so, contact us immediately.</P>
