@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const TEAM_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/pharmacy-team-Gcs6aoK2Y2sFTDZ5tWgFFx.webp";
 const COMMUNITY_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/community-health-b8Mtsb7ZrpbPxc22Uah2iH.webp";
@@ -67,6 +68,11 @@ const servicesList = [
 export default function About() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="About Us | Independent Pharmacy Since 1982"
+        description="Learn about Toledo Pharmacy — a family-owned independent pharmacy serving Union City, NJ since 1982. Over 40 years of personalized care, bilingual staff, and community health services."
+        path="/about"
+      />
       <Navbar />
 
       {/* Hero Banner */}

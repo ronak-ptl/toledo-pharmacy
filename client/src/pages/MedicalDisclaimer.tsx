@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const LAST_UPDATED = "April 3, 2026";
 
@@ -32,6 +33,11 @@ const UL = ({ items }: { items: string[] }) => (
 export default function MedicalDisclaimer() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Medical & Health Disclaimer"
+        description="Medical disclaimer for Toledo Pharmacy's website content. Information provided is for educational purposes only and does not constitute medical advice."
+        path="/medical-disclaimer"
+      />
       <Navbar />
       <div className="flex-1 bg-cream">
         <section className="bg-navy py-16 md:py-20">

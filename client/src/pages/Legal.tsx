@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Shield, FileText, Heart, Cookie, Lock } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const policies = [
   {
@@ -59,6 +60,11 @@ const fadeUp = {
 export default function Legal() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Legal & Privacy Center"
+        description="Toledo Pharmacy legal information including privacy policy, terms of service, HIPAA notice, medical disclaimer, and cookie policy."
+        path="/legal"
+      />
       <Navbar />
       <div className="flex-1 bg-cream">
 

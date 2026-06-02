@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const LAST_UPDATED = "April 3, 2026";
 
@@ -32,6 +33,11 @@ const UL = ({ items }: { items: string[] }) => (
 export default function HipaaNotice() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="HIPAA Notice of Privacy Practices"
+        description="Toledo Pharmacy's HIPAA Notice of Privacy Practices — how we use and protect your health information in compliance with federal law."
+        path="/hipaa-notice"
+      />
       <Navbar />
       <div className="flex-1 bg-cream">
         <section className="bg-navy py-16 md:py-20">

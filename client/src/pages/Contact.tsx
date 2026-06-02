@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID;
 
@@ -231,6 +232,11 @@ function ContactForm() {
 export default function Contact() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Contact Us | Visit or Call Toledo Pharmacy"
+        description="Contact Toledo Pharmacy at (201) 867-0297 or visit us at 3808 Bergenline Ave, Union City, NJ 07087. Open Mon-Fri 9AM-7PM, Sat 9AM-4PM. Se habla Español."
+        path="/contact"
+      />
       <Navbar />
 
       {/* Hero Banner */}

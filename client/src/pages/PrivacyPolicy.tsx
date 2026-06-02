@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const LAST_UPDATED = "April 3, 2026";
 
@@ -32,6 +33,11 @@ const UL = ({ items }: { items: string[] }) => (
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Privacy Policy"
+        description="Toledo Pharmacy's privacy policy — how we collect, use, and protect your personal information at our Union City, NJ location."
+        path="/privacy-policy"
+      />
       <Navbar />
       <div className="flex-1 bg-cream">
         <section className="bg-navy py-16 md:py-20">

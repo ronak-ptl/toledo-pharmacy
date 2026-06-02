@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import SEOHead from "@/components/SEOHead";
 
 const LAST_UPDATED = "April 3, 2026";
 
@@ -25,6 +26,11 @@ const UL = ({ items }: { items: string[] }) => (
 export default function TermsOfService() {
   return (
     <div className="min-h-screen flex flex-col">
+      <SEOHead
+        title="Terms of Service"
+        description="Terms of service for Toledo Pharmacy's website and services at 3808 Bergenline Ave, Union City, NJ 07087."
+        path="/terms-of-service"
+      />
       <Navbar />
       <div className="flex-1 bg-cream">
         <section className="bg-navy py-16 md:py-20">
