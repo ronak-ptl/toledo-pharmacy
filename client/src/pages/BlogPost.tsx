@@ -59,7 +59,7 @@ export default function BlogPost() {
     publisher: {
       "@type": "Organization",
       name: "Toledo Pharmacy",
-      url: "https://www.toledopharmacy.com",
+      url: "https://www.mytoledorx.com",
     },
   };
 

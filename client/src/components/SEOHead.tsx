@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 const SITE_NAME = "Toledo Pharmacy";
-const SITE_URL = "https://www.toledopharmacy.com";
+const SITE_URL = "https://www.mytoledorx.com";
 const DEFAULT_OG_IMAGE = "https://d2xsxph8kpxj0f.cloudfront.net/310519663492047795/CBkFvG4mcJ8DQojrBJ59Fz/hero-pharmacy-NNBzxgMYoJH5SHhL8ZDxic.webp";
 
 interface SEOHeadProps {

@@ -104,7 +104,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "Pharmacy",
   name: "Toledo Pharmacy",
-  url: "https://www.toledopharmacy.com",
+  url: "https://www.mytoledorx.com",
   telephone: "+1-201-867-0297",
   faxNumber: "+1-201-867-6848",
   image: HERO_IMG,
