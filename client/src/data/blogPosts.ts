@@ -39,6 +39,44 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "summer-heat-safety-essential-tips-for-union-city-residents-to-stay-cool-and-hydrated",
+    title: "Summer Heat Safety: Essential Tips for Union City Residents to Stay Cool and Hydrated",
+    excerpt: "As temperatures rise in Union City this summer, protecting yourself from heat-related illness becomes crucial. Learn essential hydration strategies and medication storage tips to stay safe during the hottest months.",
+    date: "June 3, 2026",
+    category: "Health Tips",
+    image: "https://images.unsplash.com/photo-1585435557343-3b092031a831?w=800&q=80&fit=crop&auto=format",
+    readTime: "5 min read",
+    content: [
+      { type: "p", text: "Summer in Union City brings beautiful weather perfect for outdoor activities along Bergenline Avenue and our local parks. However, rising temperatures also bring increased risks of heat exhaustion, dehydration, and other heat-related health concerns. As your neighborhood pharmacy team, we want to help you enjoy the season safely with practical tips to beat the heat and protect your health." },
+      { type: "h", text: "Recognizing Heat-Related Illness" },
+      { type: "p", text: "Heat exhaustion and heat stroke are serious conditions that can develop quickly in high temperatures. Early warning signs include excessive sweating, weakness, dizziness, nausea, headache, and muscle cramps. More severe symptoms like confusion, rapid heartbeat, or cessation of sweating require immediate medical attention. Being able to recognize these symptoms in yourself and others can be life-saving during Union City's hottest summer days." },
+      { type: "h", text: "Stay Hydrated: Beyond Just Water" },
+      { type: "p", text: "Proper hydration goes beyond simply drinking water when you feel thirsty. Start hydrating early in the day and continue regularly, aiming for at least 8 glasses of water daily, more if you're active outdoors. Sports drinks can help replace electrolytes lost through sweating, but be mindful of added sugars. Fresh fruits with high water content like watermelon, cucumbers, and oranges provide both hydration and essential nutrients." },
+      {
+        type: "ul",
+        items: [
+          "Drink water before, during, and after outdoor activities",
+          "Avoid excessive caffeine and alcohol, which can contribute to dehydration",
+          "Monitor urine color - pale yellow indicates good hydration",
+          "Keep a water bottle with you when walking along Bergenline Avenue or visiting local shops",
+        ],
+      },
+      { type: "h", text: "Protecting Your Medications from Heat" },
+      { type: "p", text: "Many residents don't realize that summer heat can damage their medications, reducing effectiveness or creating safety concerns. Most medications should be stored in a cool, dry place away from direct sunlight - not in cars, windowsills, or medicine cabinets in steamy bathrooms. If you're traveling or spending extended time outdoors, bring medications in an insulated bag with ice packs." },
+      { type: "p", text: "At Toledo Pharmacy, we often see patients concerned about medications that have been exposed to heat. If you're unsure whether your medications have been compromised by high temperatures, bring them in for a consultation. Some medications, particularly insulin, certain antibiotics, and liquid formulations, are especially sensitive to temperature changes." },
+      { type: "h", text: "Smart Summer Strategies for Union City" },
+      { type: "p", text: "Take advantage of Union City's indoor spaces during peak heat hours between 10 AM and 4 PM. Plan outdoor activities for early morning or evening when temperatures are cooler. When you do venture out, wear lightweight, light-colored, loose-fitting clothing and don't forget sunscreen - sunburn affects your body's ability to cool itself." },
+      { type: "p", text: "Create cooling stations in your home by closing blinds during the day, using fans to circulate air, and taking cool showers or baths. If you don't have air conditioning, consider visiting air-conditioned public spaces like libraries, shopping centers, or community centers during the hottest parts of the day." },
+      { type: "h", text: "Special Considerations for Vulnerable Populations" },
+      { type: "p", text: "Older adults, young children, and people with chronic conditions like diabetes, heart disease, or kidney problems face higher risks during extreme heat. These individuals may have reduced ability to regulate body temperature or take medications that affect heat tolerance. Check on elderly neighbors and family members regularly, and never leave children or pets in parked cars, even for brief periods." },
+      { type: "p", text: "If you're caring for someone in a high-risk category, help them stay hydrated, ensure they have access to cool environments, and monitor them for signs of heat-related illness. Our pharmacy team is always available to discuss how specific medications might affect heat tolerance or provide guidance on summer safety." },
+      { type: "h", text: "En Español" },
+      { type: "p", text: "Durante el verano en Union City, es importante protegerse del calor extremo. Manténgase hidratado bebiendo agua regularmente, especialmente antes de salir al aire libre. Guarde sus medicamentos en lugares frescos y secos, nunca en el automóvil o bajo el sol directo. Si tiene preguntas sobre cómo el calor puede afectar sus medicamentos, visite Toledo Pharmacy en 3808 Bergenline Ave." },
+      { type: "p", text: "Remember, staying safe in summer heat is about preparation and awareness. By following these tips and listening to your body, you can enjoy all that Union City's summer has to offer while protecting your health. If you have questions about how the heat might affect your specific medications or health conditions, stop by Toledo Pharmacy at 3808 Bergenline Ave or call us at (201) 867-0297. We're here to help you stay healthy all summer long." },
+      { type: "disclaimer", text: "This article is for informational purposes only and does not constitute medical advice. Please consult your doctor or pharmacist before making changes to your health routine." }
+    ],
+  },
+  {
     id: "mens-health-month-screenings",
     title: "Men's Health Month: Small Screenings, Big Impact",
     excerpt:
